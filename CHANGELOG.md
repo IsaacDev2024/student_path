@@ -2,6 +2,13 @@
 
 Todas las modificaciones importantes del proyecto se documentarán en este archivo.
 
+## [2.0.5] — 2026-07-28
+- El bloque y el panel administrativo fueron ajustados al nuevo diseño SAVIO: lanzador compacto para personal autorizado, tarjetas y botones coherentes, y mejoras de accesibilidad visual en el panel.
+- Se corrigieron los estilos del Mapa de Identidad para mantener la consistencia de botones, bordes y superposición de modales en las vistas de estudiante y administración.
+- La consulta de perfiles, detalles AJAX y exportación quedó restringida a la capacidad explícita `viewstudentdata`; los roles docentes ya no reciben acceso automático a información sensible.
+- Se añadieron y normalizaron las cadenas bilingües de permisos.
+- Se retiraron las capacidades inactivas `viewreports` y `deletestudentdata`, ya que el bloque no ofrece una operación de borrado de datos de estudiantes.
+
 ## [2.0.4] - 2026-02-26
 - Se resolvió un problema de discrepancia estadística en la tarjeta de "Perfiles Completos" del Dashboard y del bloque para el profesor (donde se mostraba un número superior al informe exportado) al unificar toda contabilidad mediante la iteración de perfiles individuales (Validación estricta de 5 tests completos).
 - Se redujo a la mitad la presión de carga de la base de datos producida por la consulta duplicada `get_integrated_course_stats()` al reusar inteligentemente los datos en memoria en `admin_view.php` y en las vistas del profesor.

@@ -32,13 +32,13 @@ if (!$DB->record_exists('block_instances', array('blockname' => 'student_path', 
 }
 
 // Verificar permisos (profesor o admin)
-if (!has_capability('block/student_path:viewreports', $context)) {
+if (!has_capability('block/student_path:viewstudentdata', $context)) {
     // Si es estudiante, redirigir a su vista
     if (has_capability('block/student_path:makemap', $context)) {
         redirect(new moodle_url('/blocks/student_path/view.php', ['cid' => $courseid]));
     }
     // Si no, error estándar
-    require_capability('block/student_path:viewreports', $context);
+    require_capability('block/student_path:viewstudentdata', $context);
 }
 
 // Incluir CSS personalizado del admin dashboard
@@ -359,7 +359,7 @@ function toggleCard(card) {
     card.style.setProperty('left', initialLeft + 'px', 'important');
     card.style.setProperty('width', initialWidth + 'px', 'important');
     card.style.setProperty('height', initialHeight + 'px', 'important');
-    card.style.setProperty('z-index', '1000', 'important');
+    card.style.setProperty('z-index', '2000', 'important');
     card.style.setProperty('margin', '0', 'important');
     
     // Force reflow
@@ -425,7 +425,7 @@ function closeCard(card) {
     card.style.setProperty('left', rect.left + 'px', 'important');
     card.style.setProperty('width', rect.width + 'px', 'important');
     card.style.setProperty('height', rect.height + 'px', 'important');
-    card.style.setProperty('z-index', '1000', 'important');
+    card.style.setProperty('z-index', '2000', 'important');
     
     // Force reflow
     void card.offsetWidth;

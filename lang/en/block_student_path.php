@@ -1,14 +1,17 @@
 <?php
+$string['student_path:viewstudentdata'] = 'View sensitive student data';
+$string['sensitive_data'] = 'Sensitive data';
+$string['open_admin_panel'] = 'Open administration panel';
 $string['pluginname'] = 'Identity Map';
 $string['student_path:addinstance'] = 'Add identity map block';
 $string['student_path:myaddinstance'] = 'Add identity map block to dashboard';
+$string['student_path:makemap'] = 'Create the Identity Map';
 $string['config_showdescriptions'] = 'Show descriptions';
 $string['config_showdescriptions_help'] = 'Show or hide the description banners in the block.';
 
 // Block messages
 $string['student_path_intro'] = 'A personal portfolio designed to centralize your academic information, self-perception, and future projects. It functions as a dynamic log where you record your goals using the SMART model, allowing you to organize and consult your action plan in one place whenever you need it.';
 $string['continue_profile'] = 'Continue Identity Map';
-$string['no_access'] = 'You do not have access to this block.';
 $string['discover_path'] = 'Discover your Path and Personal Projection';
 $string['course_overview'] = 'Course Overview';
 $string['for_what_map'] = 'What is the purpose of the Identity Map?';

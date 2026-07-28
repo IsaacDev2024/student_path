@@ -365,14 +365,18 @@
 }
 
 .block_student_path_admin_container .search-box::before {
-    content: "\f002" !important;
-    font-family: FontAwesome, sans-serif !important;
+    content: none !important;
+}
+
+.block_student_path_admin_container .search-box-icon {
     position: absolute !important;
     left: 12px !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
     font-size: 16px !important;
     color: #718096 !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
 }
 
 .block_student_path_admin_container .filter-controls {
@@ -637,11 +641,12 @@
     width: 100% !important;
     height: 100% !important;
     background-color: rgba(0, 0, 0, 0.6) !important;
-    z-index: 999 !important;
+    z-index: 1990 !important;
     opacity: 0 !important;
     visibility: hidden !important;
     transition: opacity 0.4s ease, visibility 0.4s ease !important;
     backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
 }
 
 .card-backdrop.active {
@@ -848,8 +853,10 @@
 /* Ensure the card inner container has size */
 /* Corner Visual Cue (Ribbon/Icon) */
 .card-corner-hint::after {
-    content: '\f065' !important;
-    font-family: FontAwesome, sans-serif !important;
+    content: none !important;
+}
+
+.card-corner-hint .card-corner-icon {
     position: absolute !important;
     top: 8px !important;
     right: -48px !important;
@@ -1105,8 +1112,8 @@
 }
 
 .progress-percentage.is-low {
-    color: #4a5568 !important;
-    right: -45px !important;
+    color: #fff !important;
+    right: auto !important;
 }
 
 @keyframes growBar {
@@ -2784,18 +2791,24 @@
 }
 
 /* Buttons */
-.block_student_path .btn-block {
-    display: block !important;
+.block_student_path .student-path-actions .btn-block {
+    display: flex !important;
     width: 100% !important;
     padding: 0.375rem 0.75rem !important;
-    font-weight: 600 !important;
-    font-size: 0.9375rem !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
     line-height: 1.5 !important;
     text-align: center !important;
-    border-radius: 0.5rem !important;
+    border-radius: 0.75rem !important;
     transition: all 0.3s ease !important;
     text-decoration: none !important;
     margin-top: 1rem !important;
+    white-space: nowrap !important;
+}
+
+/* Match the borderless CTA treatment used by the other student exploration blocks. */
+.block_student_path .student-path-actions .btn-primary-custom {
+    border: 0 !important;
 }
 
 .block_student_path .btn-success-custom {

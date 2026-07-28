@@ -56,23 +56,36 @@ class block_student_path extends block_base
         // Check if user is student (using capability)
         $is_student = has_capability('block/student_path:makemap', $context);
 
-        // Check if user is teacher (using capability)
-        $is_teacher = has_capability('block/student_path:viewreports', $context);
+        // Los datos integrados solo son visibles con una autorización expresa.
+        $is_teacher = has_capability('block/student_path:viewstudentdata', $context);
+
+        if (!$is_teacher && !$is_student) {
+            return $this->content;
+        }
 
         $this->content->text .= '<div class="block_student_path">';
 
         if ($is_teacher) {
-            $this->content->text .= $this->get_teacher_content($COURSE);
+            $this->content->text .= $this->get_secure_admin_launcher($COURSE);
         } else if ($is_student) {
             $this->content->text .= $this->get_student_content($DB, $USER, $COURSE);
-        } else {
-            // Fallback or empty
-             $this->content->text .= '<div class="alert alert-info-custom">' . get_string('no_access', 'block_student_path') . '</div>';
         }
 
         $this->content->text .= '</div>';
 
         return $this->content;
+    }
+
+    private function get_secure_admin_launcher($COURSE) {
+        global $OUTPUT;
+
+        return $OUTPUT->render_from_template('block_student_path/admin_launcher', [
+            'icon_html' => '<img src="' . $this->get_icon_url()->out(false) . '" alt="" style="width: 4.25rem; height: 4.25rem; display: block; margin: 0 auto;">',
+            'security_label' => get_string('sensitive_data', 'block_student_path'),
+            'title' => get_string('integrated_dashboard', 'block_student_path'),
+            'admin_url' => (new moodle_url('/blocks/student_path/admin_view.php', ['cid' => $COURSE->id]))->out(false),
+            'button_label' => get_string('open_admin_panel', 'block_student_path'),
+        ]);
     }
 
     /**

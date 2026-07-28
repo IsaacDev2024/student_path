@@ -21,7 +21,7 @@ $status_filter = optional_param('status', 'all', PARAM_ALPHANUM);
 // Verify permissions
 $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
 $context = context_course::instance($courseid);
-require_capability('block/student_path:viewreports', $context);
+require_capability('block/student_path:viewstudentdata', $context);
 
 // Security Check
 confirm_sesskey();
@@ -299,4 +299,3 @@ $callback = function($user) use ($ls_by_user, $pt_by_user, $tm_by_user, $ch_by_u
 
 // Send download
 \core\dataformat::download_data($filename, $format, $columns, $users, $callback);
-

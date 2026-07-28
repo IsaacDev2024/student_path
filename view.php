@@ -36,7 +36,7 @@ if (!$DB->record_exists('block_instances', array('blockname' => 'student_path', 
 }
 
 // Prevent teachers from accessing the student view (redirect to teacher view)
-if (has_capability('block/student_path:viewreports', $context)) {
+if (has_capability('block/student_path:viewstudentdata', $context)) {
     redirect(new moodle_url('/blocks/student_path/admin_view.php', ['cid' => $courseid]));
 }
 

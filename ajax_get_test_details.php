@@ -27,7 +27,7 @@ $no_header = optional_param('no_header', 0, PARAM_BOOL);
 $context = context_course::instance($course_id);
 $PAGE->set_context($context);
 
-require_capability('block/student_path:viewreports', $context);
+require_capability('block/student_path:viewstudentdata', $context);
 
 // Anti-Gossip Check: Ensure student is enrolled in this course
 if (!is_enrolled($context, $user_id, '', true)) {

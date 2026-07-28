@@ -26,7 +26,7 @@ if ($courseid && $courseid != SITEID) {
     $context = context_course::instance($courseid);
 }
 
-$is_teacher = has_capability('moodle/course:manageactivities', $context);
+$is_teacher = has_capability('block/student_path:viewstudentdata', $context);
 $can_make_map = has_capability('block/student_path:makemap', $context);
 
 if (!$is_teacher && !$can_make_map) {

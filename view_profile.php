@@ -26,13 +26,13 @@ if (!$DB->record_exists('block_instances', array('blockname' => 'student_path', 
     redirect(new moodle_url('/course/view.php', array('id' => $courseid)));
 }
 
-if (!has_capability('block/student_path:viewreports', $context)) {
+if (!has_capability('block/student_path:viewstudentdata', $context)) {
     // Si es estudiante, redirigir a su vista
     if (has_capability('block/student_path:makemap', $context)) {
         redirect(new moodle_url('/blocks/student_path/view.php', ['cid' => $courseid]));
     }
     // Si no, error estándar
-    require_capability('block/student_path:viewreports', $context);
+    require_capability('block/student_path:viewstudentdata', $context);
 }
 
 // Check if the student belongs to this course (Anti-Gossip)
